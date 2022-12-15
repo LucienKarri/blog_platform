@@ -33,11 +33,7 @@ const NewArticle = ({ currentArticle = null }) => {
   });
 
   let initialValues = {
-    tagList: [
-      {
-        tagi: '',
-      },
-    ],
+    tagList: [''],
   };
   if (currentArticle) {
     initialValues = {

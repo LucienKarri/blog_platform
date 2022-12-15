@@ -12,7 +12,7 @@ const ArticleDescription = ({ title, tagList, desc, likes, checked, slug }) => {
   const token = user?.token || null;
 
   const handleClick = () => {
-    checked ? dispatch(unRateArticle({ slug, token })) : dispatch(rateArticle({ slug, token }));
+    checked && token ? dispatch(unRateArticle({ slug, token })) : dispatch(rateArticle({ slug, token }));
   };
 
   return (
@@ -21,7 +21,7 @@ const ArticleDescription = ({ title, tagList, desc, likes, checked, slug }) => {
         <Link to={`/articles/${slug}`}>
           <h2 className={classes.title}>{title.length > 40 ? 'chmo' : title}</h2>
         </Link>
-        <div onClick={() => handleClick()}>
+        <div onClick={handleClick}>
           <Statistic
             value={likes}
             valueStyle={{ fontSize: 12 }}

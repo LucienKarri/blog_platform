@@ -12,6 +12,11 @@ class KataService {
       headers,
     });
 
+    // Для удаления поста лишь
+    if (response.status === 204) {
+      return true;
+    }
+
     return await response.json();
   }
 
@@ -96,11 +101,12 @@ class KataService {
     }
   }
 
-  async getCurrentArticle(slug) {
+  async getCurrentArticle(slug, token) {
     const url = `${this.baseURL}/articles/${slug}`;
+    const body = null;
 
     try {
-      const response = await this.sendRequest(url, 'GET');
+      const response = await this.sendRequest(url, 'GET', body, token);
 
       if (response.errors) {
         throw new Error(JSON.stringify(response.errors));

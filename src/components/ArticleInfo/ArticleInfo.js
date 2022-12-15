@@ -6,7 +6,7 @@ import classes from './ArticleInfo.module.css';
 
 const ArticleInfo = ({ articleItem, single = false }) => {
   const { article } = useSelector((state) => state.articles);
-  const [current, setCurrent] = useState();
+  const [current, setCurrent] = useState(articleItem);
 
   useEffect(() => {
     if (articleItem) {

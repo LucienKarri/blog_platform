@@ -16,9 +16,9 @@ export const getArticles = createAsyncThunk(
 
 export const getCurrentArticle = createAsyncThunk(
   'articles/getCurrentArticle',
-  async function (slug, { rejectWithValue }) {
+  async function ({ slug, token }, { rejectWithValue }) {
     try {
-      return await kataService.getCurrentArticle(slug);
+      return await kataService.getCurrentArticle(slug, token);
     } catch (error) {
       return rejectWithValue(error.message);
     }
@@ -60,7 +60,7 @@ export const deleteArticle = createAsyncThunk(
 
 export const rateArticle = createAsyncThunk(
   'articles/rateArticle',
-  async function ({ slug, token = null }, { rejectWithValue, dispatch }) {
+  async function ({ slug, token }, { rejectWithValue, dispatch }) {
     try {
       const res = await kataService.rateArticle(slug, token);
       if (res.article) {
@@ -75,7 +75,7 @@ export const rateArticle = createAsyncThunk(
 
 export const unRateArticle = createAsyncThunk(
   'articles/unRateArticle',
-  async function ({ slug, token = null }, { rejectWithValue, dispatch }) {
+  async function ({ slug, token }, { rejectWithValue, dispatch }) {
     try {
       const res = await kataService.unRateArticle(slug, token);
       if (res.article) {
@@ -103,6 +103,11 @@ const articlesSlice = createSlice({
       state.success = false;
     },
     changeFavorite(state, action) {
+      if (state.article?.slug === action.payload.slug) {
+        const currentArticle = state.article;
+        currentArticle.favorited = action.payload.favorited;
+        currentArticle.favoritesCount = action.payload.favoritesCount;
+      }
       const selected = state.articles.find((item) => item.slug === action.payload.slug);
       selected.favorited = action.payload.favorited;
       selected.favoritesCount = action.payload.favoritesCount;

@@ -11,11 +11,15 @@ import { getCurrentArticle } from '../redux/slices/articlesSlice';
 const ArticlePage = () => {
   const dispatch = useDispatch();
   const { article, loading, error } = useSelector((state) => state.articles);
+  const { user } = useSelector((state) => state.user);
+  const token = user?.token || null;
   const { slug } = useParams();
 
   useEffect(() => {
-    dispatch(getCurrentArticle(slug));
-  }, [dispatch, slug]);
+    if (slug && token) {
+      dispatch(getCurrentArticle({ slug, token }));
+    }
+  }, [dispatch, slug, token]);
 
   const errorMessage = error ? <Alert type="error" message={'Oops'} /> : null;
   const spinner = loading ? <Skeleton active /> : null;
