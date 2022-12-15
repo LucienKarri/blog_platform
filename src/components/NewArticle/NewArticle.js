@@ -65,6 +65,12 @@ const NewArticle = ({ currentArticle = null }) => {
     }
   }, [success, dispatch, navigate]);
 
+  useEffect(() => {
+    if (currentArticle && currentArticle.author.username !== user?.username) {
+      navigate(`/articles/${slug}`);
+    }
+  }, [navigate, currentArticle, currentArticle.author.username, user.username, slug]);
+
   return (
     <Form layout="vertical" size="large" onFinish={handleSubmit(onSubmit)} initialValues={initialValues}>
       <Form.Item>

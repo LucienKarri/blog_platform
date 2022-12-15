@@ -16,7 +16,7 @@ const ArticlePage = () => {
   const { slug } = useParams();
 
   useEffect(() => {
-    if (slug && token) {
+    if (slug) {
       dispatch(getCurrentArticle({ slug, token }));
     }
   }, [dispatch, slug, token]);
