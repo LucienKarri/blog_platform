@@ -1,0 +1,33 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-height: 100vh;
+  background: #ebeef3;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+
+  padding: 16px 24px;
+
+  background: #ffffff;
+}
+
+.menu {
+  display: flex;
+  gap: 16px;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

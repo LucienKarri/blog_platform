@@ -1,0 +1,11 @@
+.label {
+  font-size: 14px;
+  color: #262626;
+}
+
+.error {
+  margin: 0;
+
+  font-size: 14px;
+  color: #ff4d4f;
+}
