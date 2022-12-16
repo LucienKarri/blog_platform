@@ -27,7 +27,7 @@ const schema = yup.object({
     .string()
     .required('Please repeat password')
     .oneOf([yup.ref('password')], 'Passwords do not match'),
-  processingCheck: yup.bool().oneOf([true], 'You must agree to the processing of data'),
+  processingCheck: yup.boolean().oneOf([true], 'You must agree to the processing of data'),
 });
 
 const SignUp = () => {

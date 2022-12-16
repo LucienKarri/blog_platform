@@ -21,7 +21,7 @@ const ArticleDescription = ({ title, tagList, desc, likes, checked, slug }) => {
     <div className={classes.wrapper}>
       <div className={classes.header}>
         <Link to={`/articles/${slug}`}>
-          <h2 className={classes.title}>{title.length > 40 ? 'chmo' : title}</h2>
+          <h2 className={classes.title}>{title}</h2>
         </Link>
         <div onClick={handleClick}>
           <Statistic
