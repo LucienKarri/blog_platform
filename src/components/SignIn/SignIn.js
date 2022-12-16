@@ -64,7 +64,6 @@ const SignIn = () => {
           type={'password'}
           label={'Password'}
         />
-
         {error ? <ErrorAlert error={error} /> : null}
       </Form.Item>
       <Form.Item style={{ textAlign: 'center' }}>

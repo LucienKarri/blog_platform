@@ -37,6 +37,19 @@ const EditProfile = () => {
   const dispatch = useDispatch();
   const { user, success } = useSelector((state) => state.user);
   const { control, handleSubmit } = useForm({ mode: 'onBlur', resolver: yupResolver(schema) });
+  const navigate = useNavigate();
+
+  const initialValues = {
+    username: user.username || '',
+    email: user.email || '',
+  };
+
+  useEffect(() => {
+    if (success) {
+      dispatch(changeSucces());
+      navigate('/');
+    }
+  }, [success, dispatch, navigate]);
 
   const onSubmit = (data) => {
     const newUser = {
@@ -47,27 +60,13 @@ const EditProfile = () => {
         image: data.image || user.image,
       },
     };
-    const x = {
-      token: user.token,
-      body: newUser,
-    };
-    dispatch(updateUser(x));
+    dispatch(
+      updateUser({
+        token: user.token,
+        body: newUser,
+      })
+    );
   };
-  let initialValues = {};
-  if (user) {
-    initialValues = {
-      username: user.username,
-      email: user.email,
-    };
-  }
-
-  const navigate = useNavigate();
-  useEffect(() => {
-    if (success) {
-      dispatch(changeSucces());
-      navigate('/');
-    }
-  }, [success, dispatch, navigate]);
 
   return (
     <Form layout="vertical" size="large" onFinish={handleSubmit(onSubmit)} initialValues={initialValues}>
@@ -78,7 +77,7 @@ const EditProfile = () => {
           placeholder={'Username'}
           label={'Username'}
           type={'text'}
-          defaultValue={initialValues?.username}
+          defaultValue={initialValues.username}
         />
       </Form.Item>
       <Form.Item>
@@ -88,7 +87,7 @@ const EditProfile = () => {
           placeholder={'Email address'}
           label={'Email address'}
           type={'text'}
-          defaultValue={initialValues?.email}
+          defaultValue={initialValues.email}
         />
       </Form.Item>
       <Form.Item>

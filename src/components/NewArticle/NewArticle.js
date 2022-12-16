@@ -21,13 +21,13 @@ const NewArticle = ({ currentArticle = null }) => {
   const { user } = useSelector((state) => state.user);
   const { success } = useSelector((state) => state.articles);
   const { slug } = useParams();
+  const navigate = useNavigate();
   const token = user?.token;
   const {
     control,
     formState: { isValid },
     handleSubmit,
   } = useForm({ mode: 'onBlur', resolver: yupResolver(schema) });
-
   const { append, remove } = useFieldArray({
     control,
     name: 'tagList',
@@ -36,29 +36,7 @@ const NewArticle = ({ currentArticle = null }) => {
   let initialValues = {
     tagList: [''],
   };
-  if (currentArticle) {
-    initialValues = {
-      title: currentArticle.title,
-      description: currentArticle.description,
-      text: currentArticle.body,
-      tagList: currentArticle.tagList,
-    };
-  }
 
-  const onSubmit = (data) => {
-    const x = {
-      body: { article: { title: data.title, description: data.description, body: data.text, tagList: data.tagList } },
-      token,
-      slug,
-    };
-    if (currentArticle) {
-      dispatch(updateArticle(x));
-    } else {
-      dispatch(postArticle(x));
-    }
-  };
-
-  const navigate = useNavigate();
   useEffect(() => {
     if (success) {
       dispatch(changeSuccess());
@@ -71,6 +49,29 @@ const NewArticle = ({ currentArticle = null }) => {
       navigate(`/articles/${slug}`);
     }
   }, [currentArticle, navigate, slug, user?.username]);
+
+  if (currentArticle) {
+    initialValues = {
+      title: currentArticle.title,
+      description: currentArticle.description,
+      text: currentArticle.body,
+      tagList: currentArticle.tagList,
+    };
+  }
+
+  const onSubmit = (data) => {
+    const article = {
+      body: { article: { title: data.title, description: data.description, body: data.text, tagList: data.tagList } },
+      token,
+      slug,
+    };
+
+    if (currentArticle) {
+      dispatch(updateArticle(article));
+    } else {
+      dispatch(postArticle(article));
+    }
+  };
 
   return (
     <Form layout="vertical" size="large" onFinish={handleSubmit(onSubmit)} initialValues={initialValues}>

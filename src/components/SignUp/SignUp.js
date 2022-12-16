@@ -33,6 +33,7 @@ const schema = yup.object({
 const SignUp = () => {
   const dispatch = useDispatch();
   const { user, error } = useSelector((state) => state.user);
+  const navigate = useNavigate();
   const {
     control,
     formState: { isValid },
@@ -43,7 +44,6 @@ const SignUp = () => {
     dispatch(signUp({ user: { username: data.username, email: data.email.toLowerCase(), password: data.password } }));
   };
 
-  const navigate = useNavigate();
   useEffect(() => {
     if (user) {
       navigate('/');
