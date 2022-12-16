@@ -117,6 +117,7 @@ const articlesSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(getArticles.pending, (state) => {
       state.loading = true;
+      state.error = false;
     });
     builder.addCase(getArticles.fulfilled, (state, action) => {
       state.loading = false;
@@ -132,6 +133,7 @@ const articlesSlice = createSlice({
 
     builder.addCase(getCurrentArticle.pending, (state) => {
       state.loading = true;
+      state.error = false;
     });
     builder.addCase(getCurrentArticle.fulfilled, (state, action) => {
       state.loading = false;

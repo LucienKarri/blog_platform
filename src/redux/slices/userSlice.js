@@ -57,6 +57,7 @@ const userSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(signIn.fulfilled, (state, action) => {
       state.user = action.payload.user;
+      state.error = false;
     });
     builder.addCase(signIn.rejected, (state, action) => {
       state.user = null;
@@ -65,6 +66,7 @@ const userSlice = createSlice({
 
     builder.addCase(signUp.fulfilled, (state, action) => {
       state.user = action.payload.user;
+      state.error = false;
     });
     builder.addCase(signUp.rejected, (state, action) => {
       state.user = null;
@@ -74,6 +76,8 @@ const userSlice = createSlice({
     builder.addCase(updateUser.fulfilled, (state, action) => {
       state.success = true;
       state.user = action.payload.user;
+
+      state.error = false;
     });
     builder.addCase(updateUser.rejected, (state, action) => {
       state.success = false;
@@ -82,6 +86,8 @@ const userSlice = createSlice({
 
     builder.addCase(getUser.fulfilled, (state, action) => {
       state.user = action.payload.user;
+
+      state.error = false;
     });
     builder.addCase(getUser.rejected, (state, action) => {
       state.user = null;
