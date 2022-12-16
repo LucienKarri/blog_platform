@@ -1,4 +1,4 @@
-import { Avatar, Button, Modal } from 'antd';
+import { Avatar, Button, ConfigProvider, Modal } from 'antd';
 import { format } from 'date-fns';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -35,24 +35,32 @@ const ArticleMeta = ({ username, avatar, date, author, slug, single }) => {
 
   if (user && user.username === author && single) {
     menu = (
-      <div className={classes.wrapper}>
+      <div className={classes.menu}>
         <Button danger onClick={showConfirm}>
           Delete
         </Button>
         <Link to="edit">
-          <Button>Edit</Button>
+          <ConfigProvider
+            theme={{
+              token: { colorPrimary: '#00b96b' },
+            }}
+            e
+          >
+            <Button>Edit</Button>
+          </ConfigProvider>
         </Link>
       </div>
     );
   }
+
   return (
-    <div className={classes.info}>
+    <div className={classes.meta}>
       <div className={classes.wrapper}>
         <div className={classes.info}>
-          <span>{username}</span>
-          <span>{format(new Date(date), 'MMMM d, y')}</span>
+          <h2>{username}</h2>
+          <span className={classes.created}>{format(new Date(date), 'MMMM d, y')}</span>
         </div>
-        <Avatar src={avatar} size={46} />
+        <Avatar src={avatar} size={55} />
       </div>
       {menu}
     </div>

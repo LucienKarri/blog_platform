@@ -69,7 +69,7 @@ const NewArticle = ({ currentArticle = null }) => {
     if (currentArticle && currentArticle.author.username !== user?.username) {
       navigate(`/articles/${slug}`);
     }
-  }, [navigate, currentArticle, currentArticle.author.username, user.username, slug]);
+  }, [currentArticle, navigate, slug, user?.username]);
 
   return (
     <Form layout="vertical" size="large" onFinish={handleSubmit(onSubmit)} initialValues={initialValues}>

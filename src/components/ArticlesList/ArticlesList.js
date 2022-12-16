@@ -31,7 +31,7 @@ const ArticlesList = () => {
       {!(loading || error) && (
         <List
           split={false}
-          style={{ paddingBottom: 16 }}
+          style={{ paddingBottom: 16, width: '66%' }}
           dataSource={articles}
           renderItem={(article) => (
             <List.Item>

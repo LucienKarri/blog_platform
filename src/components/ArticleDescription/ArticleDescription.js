@@ -29,10 +29,8 @@ const ArticleDescription = ({ title, tagList, desc, likes, checked, slug }) => {
           />
         </div>
       </div>
-      <div className={classes.tags}>
-        <TagsList tags={tagList} />
-      </div>
-      <span className={classes.description}>{desc.length > 100 ? 'pizduk' : desc}</span>
+      <TagsList tags={tagList} />
+      <span className={classes.description}>{desc}</span>
     </div>
   );
 };

@@ -1,12 +1,18 @@
 import { Tag } from 'antd';
 
+import classes from './TagsList.module.css';
+
 const TagsList = ({ tags }) => {
-  return tags.map((tag, index) =>
-    tag?.trim().length > 0 ? (
-      <Tag key={index} style={{ background: '#ffffff' }}>
-        {tag.length > 10 ? 'pidor detect' : tag}
-      </Tag>
-    ) : null
+  return (
+    <ul className={classes.list}>
+      {tags.map((tag, index) =>
+        tag?.trim().length > 0 ? (
+          <li key={index}>
+            <Tag style={{ background: '#ffffff' }}>{tag.length > 30 ? tag.slice(0, 30) + '...' : tag}</Tag>
+          </li>
+        ) : null
+      )}
+    </ul>
   );
 };
 
