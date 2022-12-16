@@ -2,8 +2,10 @@ import { HeartFilled, HeartOutlined } from '@ant-design/icons';
 import { Statistic } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+
 import { rateArticle, unRateArticle } from '../../redux/slices/articlesSlice';
-import TagsList from '../TagsList';
+import { TagsList } from '../TagsList';
+
 import classes from './ArticleDescription.module.css';
 
 const ArticleDescription = ({ title, tagList, desc, likes, checked, slug }) => {

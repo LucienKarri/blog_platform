@@ -1,12 +1,13 @@
 import { Form, Button } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
-import ControlledInput from '../ControlledInput/';
-import { changeSucces, updateUser } from '../../redux/slices/userSlice';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+
+import { changeSucces, updateUser } from '../../redux/slices/userSlice';
+import { ControlledInput } from '../ControlledInput/';
 
 const schema = yup.object().shape(
   {

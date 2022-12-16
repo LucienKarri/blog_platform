@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+
 import KataService from '../../services/KataService';
 
 const kataService = new KataService();
@@ -99,7 +100,7 @@ const articlesSlice = createSlice({
     success: false,
   },
   reducers: {
-    changeSuccess(state, action) {
+    changeSuccess(state) {
       state.success = false;
     },
     changeFavorite(state, action) {
@@ -142,24 +143,24 @@ const articlesSlice = createSlice({
       state.error = action.payload;
     });
 
-    builder.addCase(postArticle.fulfilled, (state, action) => {
+    builder.addCase(postArticle.fulfilled, (state) => {
       state.success = true;
     });
-    builder.addCase(postArticle.rejected, (state, action) => {
+    builder.addCase(postArticle.rejected, (state) => {
       state.success = false;
     });
 
-    builder.addCase(deleteArticle.fulfilled, (state, action) => {
+    builder.addCase(deleteArticle.fulfilled, (state) => {
       state.success = true;
     });
-    builder.addCase(deleteArticle.rejected, (state, action) => {
+    builder.addCase(deleteArticle.rejected, (state) => {
       state.success = false;
     });
 
-    builder.addCase(updateArticle.fulfilled, (state, action) => {
+    builder.addCase(updateArticle.fulfilled, (state) => {
       state.success = true;
     });
-    builder.addCase(updateArticle.rejected, (state, action) => {
+    builder.addCase(updateArticle.rejected, (state) => {
       state.success = false;
     });
   },

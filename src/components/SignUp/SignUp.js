@@ -1,15 +1,15 @@
 import { Button, Divider, Form } from 'antd';
-
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
-import ControlledCheckBox from '../ControlledCheckBox';
-import ControlledInput from '../ControlledInput';
-import { signUp } from '../../redux/slices/userSlice';
 import { Link, useNavigate } from 'react-router-dom';
-import ErrorAlert from '../ErrorAlert';
 import { useEffect } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+
+import { ControlledCheckBox } from '../ControlledCheckBox';
+import { ControlledInput } from '../ControlledInput';
+import { signUp } from '../../redux/slices/userSlice';
+import { ErrorAlert } from '../ErrorAlert';
 
 const schema = yup.object({
   username: yup

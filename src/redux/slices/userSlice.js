@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+
 import KataService from '../../services/KataService';
 
 const kataService = new KataService();
@@ -17,7 +18,7 @@ export const signIn = createAsyncThunk('user/signIn', async function (body, { re
   }
 });
 
-export const getUser = createAsyncThunk('user/getUser', async function (token, { rejectWithValue }) {
+export const getUser = createAsyncThunk('user/getUser', async function (token) {
   try {
     return await kataService.getUser(token);
   } catch (error) {
@@ -45,11 +46,11 @@ const userSlice = createSlice({
   name: 'user',
   initialState: { user: null, error: null, success: false },
   reducers: {
-    logOut(state, action) {
+    logOut(state) {
       state.user = null;
       localStorage.removeItem('token');
     },
-    changeSucces(state, action) {
+    changeSucces(state) {
       state.success = false;
     },
   },

@@ -3,7 +3,9 @@ import { format } from 'date-fns';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
+
 import { changeSuccess, deleteArticle } from '../../redux/slices/articlesSlice';
+
 import classes from './ArticleMeta.module.css';
 
 const { confirm } = Modal;

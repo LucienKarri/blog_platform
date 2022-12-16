@@ -1,14 +1,14 @@
 import { Button, Form } from 'antd';
-
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
-import ControlledInput from '../ControlledInput';
-import { signIn } from '../../redux/slices/userSlice';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import ErrorAlert from '../ErrorAlert';
 import { useEffect } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+
+import { ErrorAlert } from '../ErrorAlert';
+import { signIn } from '../../redux/slices/userSlice';
+import { ControlledInput } from '../ControlledInput';
 
 const schema = yup.object({
   email: yup.string().required('Email is required').email('Is not in correct format'),

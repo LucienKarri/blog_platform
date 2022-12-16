@@ -1,6 +1,7 @@
 import { Button, Avatar, ConfigProvider } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, Outlet } from 'react-router-dom';
+
 import { logOut } from '../../redux/slices/userSlice';
 
 import classes from './AppLayout.module.css';

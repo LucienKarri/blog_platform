@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import ArticleDescription from '../ArticleDescription';
-import ArticleMeta from '../ArticleMeta';
+
+import { ArticleDescription } from '../ArticleDescription';
+import { ArticleMeta } from '../ArticleMeta';
+
 import classes from './ArticleInfo.module.css';
 
 const ArticleInfo = ({ articleItem, single = false }) => {

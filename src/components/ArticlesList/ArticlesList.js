@@ -1,8 +1,9 @@
-import { getArticles } from '../../redux/slices/articlesSlice';
-import ArticleInfo from '../ArticleInfo';
 import { List, Card, Skeleton, Alert } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
+
+import { ArticleInfo } from '../ArticleInfo';
+import { getArticles } from '../../redux/slices/articlesSlice';
 
 const ArticlesList = () => {
   const dispatch = useDispatch();

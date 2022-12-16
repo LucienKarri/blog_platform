@@ -1,3 +1,3 @@
 import { ControlledTextArea } from './ControlledTextArea';
 
-export default ControlledTextArea;
+export { ControlledTextArea };

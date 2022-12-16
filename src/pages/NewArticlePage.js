@@ -1,5 +1,6 @@
 import { Card } from 'antd';
-import NewArticle from '../components/NewArticle';
+
+import { NewArticle } from '../components/NewArticle';
 
 const NewArticlePage = () => {
   return (

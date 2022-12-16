@@ -1,5 +1,6 @@
 import { Card } from 'antd';
-import SignUp from '../components/SignUp';
+
+import { SignUp } from '../components/SignUp';
 
 const SignUpPage = () => {
   return (

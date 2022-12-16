@@ -1,3 +1,3 @@
 import ArticleBody from './ArticleBody';
 
-export default ArticleBody;
+export { ArticleBody };

@@ -1,15 +1,15 @@
 import { Route, Routes } from 'react-router-dom';
-import { ArticlesPage } from '../../pages/ArticlesPage';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
+import { ArticlesPage } from '../../pages/ArticlesPage';
 import { ArticlePage } from '../../pages/ArticlePage';
 import { EditProfilePage } from '../../pages/EditProfilePage';
 import { NewArticlePage } from '../../pages/NewArticlePage';
 import { SignInPage } from '../../pages/SignInPage';
 import { SignUpPage } from '../../pages/SignUpPage';
-import AppLayout from '../AppLayout';
+import { AppLayout } from '../AppLayout';
 import { RequireAuth } from '../../hoc/RequireAuth';
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
 import { getUser } from '../../redux/slices/userSlice';
 
 const App = () => {

@@ -1,3 +1,3 @@
 import ErrorAlert from './ErrorAlert';
 
-export default ErrorAlert;
+export { ErrorAlert };

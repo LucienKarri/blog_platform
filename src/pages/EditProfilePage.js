@@ -1,5 +1,6 @@
 import { Card } from 'antd';
-import EditProfile from '../components/EditProfile';
+
+import { EditProfile } from '../components/EditProfile';
 
 const EditProfilePage = () => {
   return (

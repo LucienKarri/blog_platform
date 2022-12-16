@@ -2,9 +2,10 @@ import { Card, Skeleton, Alert } from 'antd';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Route, Routes, useParams } from 'react-router-dom';
-import ArticleBody from '../components/ArticleBody';
-import ArticleInfo from '../components/ArticleInfo';
-import NewArticle from '../components/NewArticle';
+
+import { ArticleBody } from '../components/ArticleBody';
+import { ArticleInfo } from '../components/ArticleInfo';
+import { NewArticle } from '../components/NewArticle';
 import { RequireAuth } from '../hoc/RequireAuth';
 import { getCurrentArticle } from '../redux/slices/articlesSlice';
 

@@ -3,11 +3,12 @@ import { useEffect } from 'react';
 import { useForm, useFieldArray } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
-import { postArticle, changeSuccess, updateArticle } from '../../redux/slices/articlesSlice';
-import ControlledInput from '../ControlledInput';
-import ControlledTextArea from '../ControlledTextArea';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+
+import { postArticle, changeSuccess, updateArticle } from '../../redux/slices/articlesSlice';
+import { ControlledInput } from '../ControlledInput';
+import { ControlledTextArea } from '../ControlledTextArea';
 
 const schema = yup.object({
   title: yup.string().required('Please enter title'),
